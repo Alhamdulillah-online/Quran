@@ -64,9 +64,9 @@ function renderLibrary() {
   for (const chapter of matches) {
     const item = document.createElement("li");
     item.className = "chapter-item";
-    const button = document.createElement("button");
+    const button = document.createElement("a");
     button.className = "chapter-button";
-    button.type = "button";
+    button.href = `reader.html?surah=${chapter.number}`;
     button.dataset.chapterId = chapter.id;
     button.setAttribute("aria-current", String(currentChapter?.id === chapter.id));
 
@@ -94,13 +94,6 @@ function renderLibrary() {
       copy.append(arabic);
     }
     button.append(number, copy);
-    button.addEventListener("click", () => {
-      if (!IS_READER_PAGE) {
-        window.location.href = `reader.html?surah=${chapter.number}`;
-        return;
-      }
-      openChapter(chapter);
-    });
     item.append(button);
     fragment.append(item);
   }
