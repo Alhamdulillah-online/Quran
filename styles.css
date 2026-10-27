@@ -179,6 +179,7 @@ h1 em { color: var(--gold-bright); font-weight: 400; }
 .chapter-number { color: var(--gold); font-size: .75rem; font-variant-numeric: tabular-nums; text-align: center; }
 .chapter-copy { display: grid; min-width: 0; }
 .chapter-name { overflow-wrap: anywhere; font-size: .85rem; font-weight: 620; }
+.chapter-translation { overflow-wrap: anywhere; color: var(--subtle); font-size: .72rem; }
 .chapter-arabic { color: var(--muted); font: .83rem/1.5 "Noto Naskh Arabic", "Amiri", serif; text-align: left; }
 .library-note { margin: 1rem 0 0; padding-top: .85rem; border-top: 1px solid var(--line-soft); color: var(--subtle); font-size: .7rem; line-height: 1.45; }
 .reader-panel { min-width: 0; padding: clamp(1rem, 2.2vw, 1.65rem); }
@@ -194,13 +195,21 @@ h1 em { color: var(--gold-bright); font-weight: 400; }
 .page-indicator input { width: 3.4rem; height: 38px; border: 1px solid var(--line); border-radius: .45rem; color: var(--text); background: var(--surface); font-variant-numeric: tabular-nums; text-align: center; }
 .reader-status { min-height: 1.35rem; margin: .35rem 0 .75rem; color: var(--subtle); font-size: .75rem; }
 .reader-status[data-kind="success"] { color: #a8d0a8; }
+.api-badge { display: inline-flex; align-items: center; gap: .45rem; color: var(--gold-bright); font-size: .76rem; font-weight: 650; }
+.api-dot { width: .48rem; height: .48rem; border-radius: 50%; background: #78c58b; box-shadow: 0 0 0 .2rem rgba(120, 197, 139, .14); }
 .empty-state { display: flex; min-height: 350px; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1.25rem; border: 1px dashed var(--line); border-radius: .85rem; background: radial-gradient(circle at 50% 30%, rgba(217, 186, 107, .08), transparent 50%), var(--bg-soft); text-align: center; }
 .empty-rosette { margin-bottom: 1rem; color: var(--gold); font-size: 2rem; line-height: 1; }
 .empty-state h3 { margin-bottom: .65rem; font: 500 1.25rem Georgia, "Times New Roman", serif; }
 .empty-state p { max-width: 30rem; margin-bottom: .65rem; color: var(--muted); font-size: .84rem; }
 .empty-state code { padding: .08rem .3rem; border-radius: .25rem; color: var(--gold-bright); background: var(--surface-2); }
 .empty-state .empty-secondary { margin-bottom: 0; color: var(--subtle); font-size: .75rem; }
-.pdf-pages { max-height: 78vh; overflow: auto; padding: .35rem .35rem 1rem; border-radius: .7rem; background: var(--canvas-bg); overscroll-behavior: contain; scrollbar-color: var(--gold) var(--surface); }
+.pdf-pages { max-height: 78vh; overflow: auto; padding: clamp(.6rem, 2vw, 1.3rem); border-radius: .7rem; background: var(--canvas-bg); overscroll-behavior: contain; scrollbar-color: var(--gold) var(--surface); }
+.verse-card { margin: 0 auto .8rem; padding: clamp(1rem, 2.5vw, 1.55rem); border: 1px solid var(--line-soft); border-radius: .8rem; background: linear-gradient(135deg, rgba(217, 186, 107, .06), transparent 42%), var(--surface); }
+.verse-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .85rem; color: var(--subtle); font-size: .7rem; letter-spacing: .06em; }
+.verse-meta a { color: var(--gold); text-decoration: none; }
+.verse-meta a:hover { color: var(--gold-bright); text-decoration: underline; }
+.verse-key { display: inline-grid; min-width: 2.25rem; min-height: 1.65rem; place-items: center; padding: .15rem .4rem; border: 1px solid var(--line); border-radius: .35rem; color: var(--gold-bright); font-variant-numeric: tabular-nums; }
+.verse-text { margin: 0; color: var(--text); font: clamp(1.65rem, 3.4vw, 2.45rem)/2.1 "Noto Naskh Arabic", "Amiri", "Times New Roman", serif; text-align: right; }
 .pdf-page { position: relative; display: grid; width: min(100%, 920px); min-height: 150px; place-items: center; margin: 0 auto 1rem; background: #fff; box-shadow: 0 7px 24px rgba(0, 0, 0, .28); }
 .pdf-canvas { display: block; max-width: 100%; height: auto; }
 .page-skeleton { position: absolute; inset: 0; display: grid; place-items: center; color: #756f60; background: #faf8f1; font-size: .8rem; }
