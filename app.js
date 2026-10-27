@@ -5,12 +5,14 @@ const chapterList = $("#chapter-list");
 const libraryStatus = $("#library-status");
 const readerStatus = $("#reader-status");
 const versesContainer = $("#pdf-pages");
+const IS_READER_PAGE = Boolean($("#reader-panel"));
 let chapters = [];
 let currentChapter = null;
 let currentVerses = [];
 let apiRequestGeneration = 0;
 
 function setStatus(element, message, kind = "") {
+  if (!element) return;
   element.textContent = message;
   if (kind) element.dataset.kind = kind;
   else delete element.dataset.kind;
@@ -92,7 +94,13 @@ function renderLibrary() {
       copy.append(arabic);
     }
     button.append(number, copy);
-    button.addEventListener("click", () => openChapter(chapter));
+    button.addEventListener("click", () => {
+      if (!IS_READER_PAGE) {
+        window.location.href = `reader.html?surah=${chapter.number}`;
+        return;
+      }
+      openChapter(chapter);
+    });
     item.append(button);
     fragment.append(item);
   }
@@ -102,20 +110,20 @@ function renderLibrary() {
   if (focusedId) chapterList.querySelector(`[data-chapter-id="${CSS.escape(focusedId)}"]`)?.focus({ preventScroll: true });
   if (!chapters.length) setStatus(libraryStatus, "No chapters are available right now.");
   else if (query && !matches.length) setStatus(libraryStatus, "No chapters match your search.");
-  else setStatus(libraryStatus, `${matches.length} of ${chapters.length} Surah${chapters.length === 1 ? "" : "s"} available from Quran.com.`);
+  else setStatus(libraryStatus, `${matches.length} of ${chapters.length} Surah${chapters.length === 1 ? "" : "s"} available.`);
 }
 
 async function loadChapters() {
   try {
     const data = await fetchJson("/chapters?language=en");
     chapters = data.chapters.map(normalizeChapter).sort((a, b) => a.number - b.number);
-    setStatus(libraryStatus, "Loading Surahs from Quran.com…");
+    setStatus(libraryStatus, "Loading the Surah library…");
   } catch (apiError) {
     console.warn("Quran.com chapter metadata could not be loaded; trying local data.", apiError);
     const response = await fetch(new URL("chapters.json", document.baseURI), { cache: "no-store" });
     if (!response.ok) throw new Error(`Chapter list returned HTTP ${response.status}.`);
     chapters = validateLocalChapters(await response.json());
-    setStatus(libraryStatus, "Using the repository chapter list. Quran.com is temporarily unavailable.", "error");
+    setStatus(libraryStatus, "Using the saved chapter list. Live text is temporarily unavailable.", "error");
   }
   renderLibrary();
 }
@@ -133,13 +141,7 @@ function renderVerses(chapter, verses) {
     const key = document.createElement("span");
     key.className = "verse-key";
     key.textContent = verse.verse_key;
-    const source = document.createElement("a");
-    source.href = `https://quran.com/${chapter.number}/${verse.verse_key.split(":")[1]}`;
-    source.target = "_blank";
-    source.rel = "noopener noreferrer";
-    source.textContent = "Quran.com";
-    source.setAttribute("aria-label", `Open ayah ${verse.verse_key} on Quran.com`);
-    meta.append(key, source);
+    meta.append(key);
 
     const text = document.createElement("p");
     text.className = "verse-text";
@@ -153,6 +155,10 @@ function renderVerses(chapter, verses) {
 }
 
 async function openChapter(chapter) {
+  if (!IS_READER_PAGE) {
+    window.location.href = `reader.html?surah=${chapter.number}`;
+    return;
+  }
   currentChapter = chapter;
   const generation = ++apiRequestGeneration;
   $("#reader-title").textContent = chapter.name;
@@ -162,7 +168,7 @@ async function openChapter(chapter) {
   versesContainer.hidden = false;
   renderLibrary();
   versesContainer.replaceChildren();
-  setStatus(readerStatus, `Loading ${chapter.name} from Quran.com…`);
+  setStatus(readerStatus, `Loading ${chapter.name}…`);
 
   try {
     const data = await fetchJson(`/quran/verses/uthmani?chapter_number=${chapter.number}`);
@@ -171,7 +177,7 @@ async function openChapter(chapter) {
     if (!currentVerses.length) throw new Error("The API returned no ayahs for this Surah.");
     renderVerses(chapter, currentVerses);
     $("#verse-count").textContent = `${currentVerses.length} ayahs`;
-    setStatus(readerStatus, `${chapter.name} is ready · Arabic Uthmani text provided by Quran.com.`, "success");
+    setStatus(readerStatus, `${chapter.name} is ready · verified Arabic Uthmani text.`, "success");
     versesContainer.focus({ preventScroll: true });
   } catch (error) {
     console.error("Surah could not be loaded from Quran.com.", error);
@@ -179,8 +185,8 @@ async function openChapter(chapter) {
     versesContainer.hidden = true;
     $("#empty-state").hidden = false;
     $("#empty-state h3").textContent = "This Surah could not be loaded";
-    $("#empty-state p").textContent = "Quran.com could not be reached right now. Please check your connection and try again.";
-    setStatus(readerStatus, "The Quran.com API request failed. Other Surahs remain available.", "error");
+    $("#empty-state p").textContent = "The reading service could not be reached right now. Please check your connection and try again.";
+    setStatus(readerStatus, "The text request failed. Other Surahs remain available.", "error");
   }
 }
 
@@ -195,6 +201,19 @@ try {
 
 loadChapters().catch((error) => {
   console.error("Chapter list could not be loaded.", error);
-  setStatus(libraryStatus, "The Quran.com chapter list could not be loaded. Refresh to try again.", "error");
+  setStatus(libraryStatus, "The Surah library could not be loaded. Refresh to try again.", "error");
   setStatus(readerStatus, "The reader is available once the chapter list loads.", "error");
 });
+
+if (IS_READER_PAGE) {
+  const requestedSurah = Number(new URLSearchParams(window.location.search).get("surah"));
+  if (requestedSurah) {
+    const waitForChapters = window.setInterval(() => {
+      const chapter = chapters.find((item) => item.number === requestedSurah);
+      if (!chapter) return;
+      window.clearInterval(waitForChapters);
+      openChapter(chapter);
+    }, 50);
+    window.setTimeout(() => window.clearInterval(waitForChapters), 10000);
+  }
+}

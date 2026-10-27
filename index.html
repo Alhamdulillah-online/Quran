@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <title>Quran Chapters Reader | Alhamdulillah</title>
-  <meta name="description" content="Read Quran chapter PDFs in a calm, accessible online reader. Browse Surahs and read on your phone, tablet, or computer.">
+  <title>Quran Reading Room | Alhamdulillah</title>
+  <meta name="description" content="A calm, premium Quran reading room. Browse Surahs and read Arabic ayahs on your phone, tablet, or computer.">
   <meta name="keywords" content="Quran online, Quran PDF reader, Surah chapters, القرآن الكريم, قراءة القرآن, ഖുർആൻ, ഖുർആൻ വായന">
   <meta name="author" content="Alhamdulillah">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="googlebot" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Quran Chapters Reader | Alhamdulillah">
-  <meta property="og:description" content="A calm, accessible place to read Quran chapter PDFs. Browse and read without an account.">
+  <meta property="og:title" content="Quran Reading Room | Alhamdulillah">
+  <meta property="og:description" content="A calm, premium place to browse Surahs and read Arabic ayahs without an account.">
   <meta property="og:site_name" content="Alhamdulillah — Quran Reader">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="./styles.css">
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","name":"Quran Chapters Reader | Alhamdulillah","description":"A calm, accessible place to read Quran chapter PDFs."}
+    {"@context":"https://schema.org","@type":"WebSite","name":"Quran Reading Room | Alhamdulillah","description":"A calm, premium place to browse Surahs and read Arabic ayahs."}
   </script>
   <script type="module" src="./app.js"></script>
 </head>
@@ -45,7 +45,7 @@
       <div class="intro-copy">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A QUIET PLACE TO READ</p>
         <h1 id="page-title">The Quran<br><em>Reading Room</em></h1>
-        <p class="intro-description">Choose a Surah and read its Arabic ayahs from the Quran.com API in a calm, focused space. No account is required.</p>
+        <p class="intro-description">Choose a Surah and read its Arabic ayahs in a calm, focused space designed for reflection. No account is required.</p>
       </div>
       <div class="intro-art" role="img" aria-label="Emerald and gold Islamic geometric pattern">
         <span class="intro-art-caption" lang="ar" dir="rtl">الْقُرْآنُ الْكَرِيمُ</span>
@@ -65,30 +65,16 @@
         </label>
         <p class="library-status" id="library-status" role="status">Loading chapter list…</p>
         <ol class="chapter-list" id="chapter-list" aria-label="Available Quran chapters"></ol>
-          <p class="library-note">Surah metadata and Arabic Uthmani text are loaded live from Quran.com.</p>
+          <p class="library-note">Surah metadata and Arabic Uthmani text are loaded live for a seamless reading experience.</p>
       </aside>
 
-      <section class="reader-panel panel" id="reader-panel" aria-labelledby="reader-title">
-        <div class="reader-topline">
-          <div class="reader-heading">
-            <p class="eyebrow">QURAN.COM API READER</p>
-            <h2 id="reader-title">Choose a Surah</h2>
-            <p id="reader-subtitle">Select a chapter from the library to begin reading.</p>
-          </div>
-        </div>
-        <div class="reader-toolbar" id="reader-toolbar" hidden>
-          <span class="api-badge"><span class="api-dot" aria-hidden="true"></span>Live Quran.com text</span>
-          <span class="page-indicator" id="verse-count">— ayahs</span>
-          <a class="toolbar-button" href="https://quran.com" target="_blank" rel="noopener noreferrer">Open Quran.com <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="reader-status" id="reader-status" role="status" aria-live="polite">Your chapter list is ready.</p>
-        <div class="empty-state" id="empty-state">
-          <span class="empty-rosette" aria-hidden="true">✳</span>
-          <h3>Your reading space is ready</h3>
-          <p>Choose a Surah from the library to load its Arabic ayahs from Quran.com.</p>
-          <p class="empty-secondary">The reader uses the public Quran.com API and does not require an account or API key.</p>
-        </div>
-        <div class="pdf-pages" id="pdf-pages" aria-label="PDF pages" tabindex="0" hidden></div>
+      <section class="welcome-panel panel" aria-labelledby="welcome-title">
+        <div class="welcome-mark" aria-hidden="true">✦</div>
+        <p class="eyebrow">THE PRIVATE READING ROOM</p>
+        <h2 id="welcome-title">A quieter way to<br><em>meet the Quran.</em></h2>
+        <p>Choose a Surah from the library. Your reading opens in a dedicated page with spacious Arabic typography, verse-by-verse focus, and a distraction-free atmosphere.</p>
+        <div class="welcome-rule" aria-hidden="true"></div>
+        <p class="welcome-note">Select a chapter to begin your reading journey.</p>
       </section>
     </section>
   </main>

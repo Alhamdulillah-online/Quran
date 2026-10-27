@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Reading Room | Quran</title>
+  <meta name="description" content="A focused, premium Quran reading experience with Arabic Uthmani text.">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to reading area</a>
+  <header class="topbar" id="top">
+    <a class="brand" href="./" aria-label="Return to Quran reading room home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M24 3.8 29 14l10.8-5-5 10.8 10.2 5-10.2 5 5 10.8-10.8-5L24 46l-5-10.4-10.8 5 5-10.8L3 24.8l10.2-5-5-10.8L19 14 24 3.8Z"/><circle cx="24" cy="24.8" r="5.4"/></svg></span>
+      <span class="brand-copy"><span class="brand-eyebrow">THE READING ROOM</span><span class="brand-name">QURAN</span></span>
+    </a>
+    <div class="topbar-actions"><a class="back-link" href="./">← Library</a><button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Switch theme"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.7A8.6 8.6 0 0 1 8.3 3.6 8.8 8.8 0 1 0 20.4 15.7Z"/></svg></button></div>
+  </header>
+  <main id="main-content" class="page-shell reading-shell">
+    <section class="reader-layout" aria-label="Quran reading page">
+      <aside class="library-panel panel" aria-labelledby="library-title">
+        <div class="panel-heading"><div><p class="eyebrow">THE LIBRARY</p><h2 id="library-title">Surah chapters</h2></div><span class="chapter-count" id="chapter-count">0</span></div>
+        <label class="search-box" for="chapter-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.2 4.2"/></svg><input id="chapter-search" type="search" placeholder="Search chapters" autocomplete="off"></label>
+        <p class="library-status" id="library-status" role="status">Loading chapter list…</p>
+        <ol class="chapter-list" id="chapter-list" aria-label="Available Quran chapters"></ol>
+        <p class="library-note">Select another Surah whenever you wish.</p>
+      </aside>
+      <section class="reader-panel panel" id="reader-panel" aria-labelledby="reader-title">
+        <div class="reader-topline"><div class="reader-heading"><p class="eyebrow">A FOCUSED READING</p><h1 id="reader-title">Choose a Surah</h1><p id="reader-subtitle">Select a chapter from the library to begin reading.</p></div></div>
+        <div class="reader-toolbar" id="reader-toolbar" hidden><span class="api-badge"><span class="api-dot" aria-hidden="true"></span>Verified Arabic text</span><span class="page-indicator" id="verse-count">— ayahs</span></div>
+        <p class="reader-status" id="reader-status" role="status" aria-live="polite">Your reading space is ready.</p>
+        <div class="empty-state" id="empty-state"><span class="empty-rosette" aria-hidden="true">✳</span><h3>Your reading space is ready</h3><p>Choose a Surah from the library to begin.</p><p class="empty-secondary">Arabic text is presented verse by verse for a calm, uninterrupted reading experience.</p></div>
+        <div class="pdf-pages" id="pdf-pages" aria-label="Quran ayahs" tabindex="0" hidden></div>
+      </section>
+    </section>
+  </main>
+  <footer class="site-footer"><span>ALHAMDULILLAH <span aria-hidden="true">·</span> QURAN READER</span><span>A private space for reflection.</span></footer>
+</body>
+</html>

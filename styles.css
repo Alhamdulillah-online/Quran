@@ -100,6 +100,8 @@ a { color: inherit; }
 }
 .brand-name { margin-top: .32rem; font: 1.1rem Georgia, "Times New Roman", serif; letter-spacing: .14em; }
 .topbar-actions { display: flex; align-items: center; gap: .8rem; }
+.back-link { color: var(--muted); font-size: .78rem; text-decoration: none; }
+.back-link:hover { color: var(--gold-bright); }
 .icon-button {
   display: grid;
   width: 44px;
@@ -145,6 +147,13 @@ h1 em { color: var(--gold-bright); font-weight: 400; }
 .intro-art-note { position: absolute; z-index: 1; top: 1.5rem; left: 1.6rem; color: rgba(245, 231, 190, .82); font-size: .63rem; letter-spacing: .18em; }
 .reader-layout { display: grid; grid-template-columns: minmax(255px, 315px) minmax(0, 1fr); align-items: start; gap: 1.15rem; }
 .panel { border: 1px solid var(--line); border-radius: 1.1rem; background: linear-gradient(145deg, rgba(255, 255, 255, .025), transparent 45%), var(--surface); box-shadow: var(--shadow); }
+.welcome-panel { min-height: 560px; padding: clamp(2rem, 5vw, 4rem); display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at 80% 16%, rgba(217, 186, 107, .12), transparent 35%), linear-gradient(145deg, rgba(255, 255, 255, .025), transparent 45%), var(--surface); }
+.welcome-mark { width: 3.4rem; height: 3.4rem; display: grid; place-items: center; margin-bottom: 1.8rem; border: 1px solid var(--line); border-radius: 50%; color: var(--gold-bright); font-size: 1.2rem; }
+.welcome-panel h2 { max-width: 22rem; margin: 0 0 1.15rem; font: 500 clamp(2rem, 4vw, 3.4rem)/1.02 Georgia, "Times New Roman", serif; letter-spacing: -.04em; }
+.welcome-panel h2 em { color: var(--gold-bright); font-weight: 400; }
+.welcome-panel > p:not(.eyebrow):not(.welcome-note) { max-width: 29rem; color: var(--muted); font-size: .96rem; }
+.welcome-rule { width: 4.5rem; height: 1px; margin: 1.2rem 0; background: var(--gold); }
+.welcome-note { margin: 0; color: var(--gold); font-size: .76rem; letter-spacing: .05em; }
 .library-panel { position: sticky; top: 1rem; padding: 1.25rem; }
 .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 .panel-heading .eyebrow, .reader-heading .eyebrow { margin-bottom: .35rem; }
@@ -240,6 +249,7 @@ h1 em { color: var(--gold-bright); font-weight: 400; }
   .intro-art { min-height: 165px; height: 165px; }
   .intro-art-caption { font-size: 1.55rem; }
   .reader-layout { grid-template-columns: 1fr; gap: .8rem; }
+  .welcome-panel { min-height: 330px; padding: 1.6rem; }
   .library-panel { position: static; }
   .chapter-list { max-height: 260px; }
   .reader-panel { min-height: 380px; }

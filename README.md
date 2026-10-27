@@ -1,6 +1,6 @@
 # Quran Chapters Reader
 
-A calm, accessible Quran reader that loads all 114 Surah names and Arabic Uthmani ayahs from the public [Quran.com API](https://api.quran.com/). Search the library, open a Surah, read its ayahs, and open an individual ayah on Quran.com. No account or API key is required.
+A calm, premium Quran reading room that loads all 114 Surah names and Arabic Uthmani ayahs for a focused reading experience. The home page is a library landing page; selecting a Surah opens the dedicated `reader.html` reading page. No account or API key is required.
 
 ## Quran.com API integration
 
