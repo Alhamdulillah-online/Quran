@@ -2,6 +2,8 @@
 
 A calm, premium Quran reading room that loads all 114 Surah names and Arabic Uthmani ayahs for a focused reading experience. The home page is a library landing page; selecting a Surah opens the dedicated `reader.html` reading page. No account or API key is required.
 
+Created by **RISHAM004**.
+
 ## Quran.com API integration
 
 The browser client uses these public API endpoints:
@@ -39,4 +41,8 @@ robots.txt       Crawler policy
 .nojekyll        Keep GitHub Pages from applying Jekyll processing
 ```
 
-The repository PDFs remain available as source files, but the main reader now uses Quran.com as its live text source.
+The PDF assets were removed from the repository; the main reader now uses the configured live text source.
+
+## Search visibility
+
+The public pages include route-specific titles and descriptions, canonical URLs, Open Graph and Twitter preview metadata, structured data for the website and creator, a root `sitemap.xml`, and a `robots.txt` sitemap reference. The canonical public origin is `https://alhamdulillah-online.github.io/Quran/`.

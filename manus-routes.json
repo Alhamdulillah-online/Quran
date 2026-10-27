@@ -1,6 +1,6 @@
 {
   "routes": [
-    {"path": "/", "title": "Quran Reading Room | Alhamdulillah"},
-    {"path": "/reader.html", "title": "Dedicated Quran Reading | Alhamdulillah"}
+    {"path": "/", "title": "Online Quran Reading Room | Alhamdulillah"},
+    {"path": "/reader.html", "title": "Read Quran Online — Arabic Surah Reader"}
   ]
 }
